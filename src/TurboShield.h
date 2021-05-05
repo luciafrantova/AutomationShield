@@ -1,6 +1,7 @@
 /*
 	API for TurboShield hardware.
-	Initial version uncomplete API in development phase.
+	Initial version.
+	Incomplete API in development phase.
 	
 	 This code is part of the AutomationShield hardware and software
   	ecosystem. Visit http://www.automationshield.com for more
@@ -12,12 +13,14 @@
 #include"Arduino.h"
 #include"Wire.h"
 #include"AutomationShield.h"
+
 class TurboShieldClass{
 public:
 	void begin();
 	float sensorRead();
 	void actuatorWrite(float percentValue);
 	void actuatorWriteVolt(float voltageValue);
+	float referenceRead();
 };
 extern TurboShieldClass TurboShield;
 #endif
