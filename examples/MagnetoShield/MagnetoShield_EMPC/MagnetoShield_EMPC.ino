@@ -29,11 +29,8 @@
 #include <MagnetoShield.h>                            // Include main library  
 #include <Sampling.h>                                 // Include sampling library
 
-#ifdef ARDUINO_ARCH_AVR
-  #include "AVR/ectrl.h"                                    // include EMPC matrices
-#else
-  #include "ectrl.h"
-#endif
+#include "ectrl_AVR.h"
+
 #include <empcSequential.h>
 
 #define MANUAL 0                    // Choose manual reference using potentiometer (1) or automatic reference trajectory (0)
@@ -63,7 +60,7 @@ static float u_opt[MPT_RANGE];      // predicted inputs
 extern struct mpc_ctl ctl;          // Object representing presets for MPC controller
 
 void setup() {                      // Setup - runs only once
-  Serial.begin(250000);             // Begin serial communication
+  Serial.begin(115200);             // Begin serial communication
 
   MagnetoShield.begin();            // Initialize MagnetoShield device
   MagnetoShield.calibration();      // Calibrate MagnetoShield device

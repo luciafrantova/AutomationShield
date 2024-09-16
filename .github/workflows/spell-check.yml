@@ -8,15 +8,17 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Spell Check All (w/ Codespell)
-        uses: arduino/actions/libraries/spell-check@master
+        uses: codespell-project/actions-codespell@master
         with:
-         ignore-words-list: etc/codespell-ignore-words-list.txt
+         only_warn: 1
+         ignore_words_file: ./etc/codespell-ignore-words-list.txt
+         skip: ./etc/codespell-ignore-words-list.txt
         #skip-paths: src/lib #not necessary since submodules are not pulled in
 
       - name: Spell Check Python (w/ PySpelling)
-        uses: rojopolis/spellcheck-github-actions@0.21.1
+        uses: rojopolis/spellcheck-github-actions@0.33.1
         with:
          task_name: Python
